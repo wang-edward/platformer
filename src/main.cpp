@@ -16,13 +16,19 @@ int main(int argc, char *argv[]) {
 
     RenderWindow window("GAME v1.0", 1280, 720);
 
-    bool gameRunning = true;
+    SDL_Texture *grass_texture = window.load_texture("res/gfx/ground_grass_1.png");
+
+    bool game_running = true;
     SDL_Event event;
-    while (gameRunning) {
+    while (game_running) {
         while(SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
-                gameRunning = false;
+                game_running = false;
             }
+
+            window.clear();
+            window.render(grass_texture);
+            window.display();
         }
     }
 
