@@ -5,6 +5,7 @@
 using namespace std;
 
 #include "RenderWindow.hpp"
+#include "Entity.hpp"
 
 int main(int argc, char *argv[]) {
     if (SDL_Init(SDL_INIT_VIDEO) > 0) {
@@ -17,6 +18,7 @@ int main(int argc, char *argv[]) {
     RenderWindow window("GAME v1.0", 1280, 720);
 
     SDL_Texture *grass_texture = window.load_texture("res/gfx/ground_grass_1.png");
+    Entity platform0(100, 50, grass_texture);
 
     bool game_running = true;
     SDL_Event event;
@@ -27,7 +29,7 @@ int main(int argc, char *argv[]) {
             }
 
             window.clear();
-            window.render(grass_texture);
+            window.render(platform0);
             window.display();
         }
     }
